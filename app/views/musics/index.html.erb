@@ -1,0 +1,19 @@
+<div id="music_player"></div>
+
+<h1>All the music !</h1>
+
+<ul>
+  <li>
+    <span>Id</span>
+    <span>Music</span>
+    <span>Sender</span>
+  </li>
+
+  <% @musics.each do |music| %>
+    <li class="clickable_links" id="music_<%= music.id %>" data-player="<%= music.type %>" data-link="<%= music.url.sub(/watch\?v=/,'embed/') %>">
+      <span><%= music.id %></span>
+      <span><%= music.title%></span>
+      <span><%= music.sender_irc %></span>
+    </li>
+  <% end %>
+</ul>
