@@ -1,9 +1,8 @@
 function music_player() {
-  
-  document.getElementById("music_player").innerHTML = 
-    "<iframe id=\"ytplayer\" type=\"text/html\" width=\"640\" height=\"390\" src=\""+$(this).data().link+"?autoplay=1\" frameborder=\"0\"/>";
+  $.get("musics/"+$(this).data().id, function( data ) {
+    $( "#music_player" ).html( data );
+  }); 
 }
-
 
 $( ".clickable_links" ).each(function() {
   $(this).on( 'click', music_player );

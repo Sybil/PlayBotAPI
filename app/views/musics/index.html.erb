@@ -10,10 +10,12 @@
   </li>
 
   <% @musics.each do |music| %>
-    <li class="clickable_links" id="music_<%= music.id %>" data-player="<%= music.type %>" data-link="<%= music.url.sub(/watch\?v=/,'embed/') %>">
+    <li class="clickable_links" id="music_<%= music.id %>" data-id="<%= music.id %>" >
       <span><%= music.id %></span>
       <span><%= music.title%></span>
       <span><%= music.sender_irc %></span>
     </li>
   <% end %>
 </ul>
+<%= paginate @musics %>
+

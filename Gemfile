@@ -29,6 +29,16 @@ gem 'spring',        group: :development
 # Give access to mysql database
 gem 'mysql2'
 
+#Souncloud Ruby API
+gem 'soundcloud'
+
+#Gem for pagination
+gem 'kaminari'
+
+group :development do
+gem 'pry'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

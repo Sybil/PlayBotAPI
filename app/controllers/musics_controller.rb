@@ -1,6 +1,6 @@
 class MusicsController < ApplicationController
   def index
-    @musics = Music.all
+    @musics = Music.page params[:page]
 
     respond_to do |format|
       format.html
@@ -9,9 +9,8 @@ class MusicsController < ApplicationController
 
   def show 
     @music = Music.find(params[:id])
-
     respond_to do |format|
-      format.html
+      format.html {render 'show', layout: false}
     end
   end
 
