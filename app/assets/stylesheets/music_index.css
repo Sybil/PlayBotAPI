@@ -1,0 +1,44 @@
+ul
+{
+  list-style-type: none;
+  margin: 5px;
+  padding: 0px;
+}
+
+.clickable_links
+{
+  background-color: rgba(0, 110, 140, 0.8);
+  margin: 2px;
+  cursor: pointer;
+}
+
+
+.clickable_links span
+{
+  display: inline-block;
+  padding: 15px 0;
+  font: 15px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: rgba(250,220,180,1);
+}
+
+.music_id
+{
+  width: 5%;
+  text-align: center;
+}
+
+.music_title
+{
+  width: 50%;
+}
+
+.music_sender
+{
+  width: 10%;
+  /*overflow: hidden;*/
+}
+
+.music_tags
+{
+  width: 20%;
+}

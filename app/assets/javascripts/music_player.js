@@ -1,5 +1,5 @@
 function music_player() {
-  $.get("musics/"+$(this).data().id, function( data ) {
+  $.get("/musics/"+$(this).data().id, function( data ) {
     $( "#music_player" ).html( data );
   }); 
 }

@@ -13,5 +13,4 @@ class MusicsController < ApplicationController
       format.html {render 'show', layout: false}
     end
   end
-
 end

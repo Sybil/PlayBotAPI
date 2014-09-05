@@ -54,4 +54,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   resources :musics
+  resources :tags
+
+  get '/musics/tags/:tag', to: "tags#show"
 end

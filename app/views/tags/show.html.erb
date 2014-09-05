@@ -4,11 +4,10 @@
   <% @musics.each do |music| %>
     <li class="clickable_links" data-id="<%= music.id %>" >
       <span class="music_id"><%= music.id %></span>
-      <span class="music_title"><%= music.title%></span>
+      <span class="music_title"><%= music.title %></span>
       <span class="music_tags"><%= music.tags.map{|t| t.tag}.join(", ") %></span>
       <span class="music_sender"><%= music.sender_irc %></span>
     </li>
   <% end %>
 </ul>
-<%= paginate @musics %>
 
