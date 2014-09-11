@@ -2,7 +2,20 @@
 
 <ul>
   <% @musics.each do |music| %>
-    <li class="clickable_links" data-id="<%= music.id %>" >
+    <li class="clickable_links" 
+        data-id="<%= music.id %>" 
+        data-player="<%= music.type %>" 
+        data-url="<%= 
+            if music.type == "youtube" 
+              track = music.url.sub(/.*v=/,'')
+            elsif music.type == "soundcloud"
+              begin
+                track = $soundcloud.get('/resolve', :url => music.url)
+                track.id 
+              rescue
+                "Link down"
+              end 
+            end %>">
       <span class="music_id"><%= music.id %></span>
       <span class="music_title"><%= music.title%></span>
       <span class="music_tags"><%= music.tags.map{|t| t.tag}.join(", ") %></span>
@@ -11,4 +24,3 @@
   <% end %>
 </ul>
 <%= paginate @musics %>
-
