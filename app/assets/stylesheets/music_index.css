@@ -27,6 +27,11 @@ ul
   text-align: center;
 }
 
+.music_chan
+{
+  width: 10%
+}
+
 .music_title
 {
   width: 50%;
