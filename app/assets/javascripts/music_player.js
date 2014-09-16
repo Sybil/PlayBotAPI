@@ -87,12 +87,16 @@ function soundcloud_listener() {
 
 function soundcloud_player() {
   player_destroy();
-  var music_url = "https://soundcloud.com/"+music_info.data().url;
-  SC.oEmbed(music_url, { auto_play: true , maxheight: 120, maxwidth: 1000 }, function(oEmbed)    {
-    player = oEmbed.html.replace('visual=true&','');
-    player = $('#player_block').html(player);
+  var music_url = "https://www.soundcloud.com/"+music_info.data().url;
+  SC.oEmbed(music_url, { auto_play: true , maxheight: 120, maxwidth: 1000 }, function(oEmbed, error) {
+    if (error) { 
+      next_music();
+    }
+    else {
+      player = oEmbed.html.replace('visual=true&','');
+      player = $('#player_block').html(player);
+      setTimeout(soundcloud_listener, 2000 );
+    }
   });
-  setTimeout(soundcloud_listener, 2000 );
-
 }
 

@@ -7,7 +7,7 @@
             if music.type == "youtube" 
               track = music.url.sub(/.*v=/,'')
             elsif music.type == "soundcloud"
-              track = music.url.sub(/https:\/\/soundcloud\.com\//,'')
+              track = music.url.sub(/https:\/\/(www\.)?soundcloud\.com\//,'')
             end %>">
       <span class="music_id"><%= music.id %></span>
       <span class="music_chan"><%= music.channel.chan %></span>
