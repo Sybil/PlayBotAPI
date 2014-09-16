@@ -1,5 +1,3 @@
-<div id="music_player"></div>
-
 <ul>
   <% @musics.each do |music| %>
     <li class="clickable_links" 
@@ -9,12 +7,7 @@
             if music.type == "youtube" 
               track = music.url.sub(/.*v=/,'')
             elsif music.type == "soundcloud"
-              begin
-                track = $soundcloud.get('/resolve', :url => music.url)
-                track.id 
-              rescue
-                "Link down"
-              end 
+              track = music.url.sub(/https:\/\/soundcloud\.com\//,'')
             end %>">
       <span class="music_id"><%= music.id %></span>
       <span class="music_chan"><%= music.channel.chan %></span>

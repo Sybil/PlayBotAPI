@@ -10,6 +10,8 @@ ul
   background-color: rgba(0, 110, 140, 0.8);
   margin: 2px;
   cursor: pointer;
+  overflow: hidden;
+  position: relative;
 }
 
 
@@ -19,6 +21,9 @@ ul
   padding: 15px 0;
   font: 15px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: rgba(250,220,180,1);
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
 }
 
 .music_id
@@ -29,7 +34,7 @@ ul
 
 .music_chan
 {
-  width: 10%
+  width: 10%;
 }
 
 .music_title
@@ -40,7 +45,6 @@ ul
 .music_sender
 {
   width: 10%;
-  /*overflow: hidden;*/
 }
 
 .music_tags

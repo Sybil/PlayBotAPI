@@ -6,10 +6,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <div id="player_position">
+    <div id="player_block"></div>
+  </div>
 <%= yield %>
 
 </body>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <script src="https://www.youtube.com/iframe_api"></script>
+<script src="https://connect.soundcloud.com/sdk.js"></script>
+<script src="https://w.soundcloud.com/player/api.js"></script>
+
 </html>

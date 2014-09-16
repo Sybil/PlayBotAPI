@@ -1,33 +1,16 @@
 <ul>
-  <li class="clickable_links" data-url="
-    <%= 
-      if @music.type == "youtube" 
-        track = @music.url.sub(/.*v=/,'')
-  elsif @music.type == "soundcloud"
-    begin
-      track = $soundcloud.get('/resolve', :url => @music.url)
-      track.id 
-    rescue
-      "Link down"
-    end 
-  end %>
-   ">
+  <li class="clickable_links" 
+        data-id="<%= music.id %>" 
+        data-player="<%= music.type %>" 
+        data-url="<%= 
+            if music.type == "youtube" 
+              track = music.url.sub(/.*v=/,'')
+            elsif music.type == "soundcloud"
+              track = music.url.sub(/https:\/\/soundcloud\.com\//,'')
+            end %>">
       <span class="music_id"><%= @music.id %></span>
       <span class="music_title"><%= @music.title%></span>
       <span class="music_tags"><%= @music.tags.map{|t| t.tag}.join(", ") %></span>
       <span class="music_sender"><%= @music.sender_irc %></span>
   </li>
 </ul>
-<%=if @music.type == "youtube" 
-    track = @music.url.sub(/watch\?v=/,'embed/')
-    raw("<iframe id=\"ytplayer\" type=\"text/html\" width=\"640\" height=\"390\" src=\""+track+"?autoplay=1\" frameborder=\"0\"/>")
-  elsif @music.type == "soundcloud"
-    begin
-      track = $soundcloud.get('/oembed', :url => @music.url, :maxwidth => "800", :maxheight => "150", :auto_play => "true")
-      raw(track['html'].gsub("visual=true&","")) 
-      #The Soundcloud API doesn't enable modification of the parameter 'visual'
-    rescue
-      "Link down"
-    end
-  end
-%>
