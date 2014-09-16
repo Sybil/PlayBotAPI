@@ -1,3 +1,10 @@
-WebPlayBot README :
+WebPlayBot
 
-This is a project about the meaning of life, music.
+Abstract
+
+WebPlayBot delivers a web interface to listen/watch video or musics gathered by PlayBot.
+
+PlayBot (https://github.com/erdnaxeli/PlayBot) is an awesome irc bot which enable people to easily manipulate music/video links through irc channels.
+Each of these links are stored in an unique database which allows to handle favourites, reminders, exchange, tags ...
+
+WebPlayBot is the link between these data and the non-irc user : helped by filters, integrated players, autonext ... you can listen all the tracks selected by enthousiasts geeks. 
