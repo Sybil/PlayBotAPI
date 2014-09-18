@@ -1,0 +1,23 @@
+<li class="clickable_links" 
+  data-id="<%= music.id %>" 
+  data-player="<%= music.type %>" 
+  data-url="<%= 
+    if music.type == "youtube" 
+      track = music.url.sub(/.*v=/,'')
+    elsif music.type == "soundcloud"
+      track = music.url.sub(/https:\/\/(www\.)?soundcloud\.com\//,'')
+    end %>">
+  <span class="music_id"><%= music.id %></span>
+  <span class="music_chan">
+    <%= link_to music.channel.chan, '/musics/channels/'+music.channel.chan.sub('#','') %>
+  </span>
+  <span class="music_title">
+    <%= link_to music.title, music.url %>
+  </span>
+  <span class="music_tags">
+    <%= raw(music.tags.map{|t| link_to t.tag, '/musics/tags/'+t.tag}.join(" ")) %>
+  </span>
+  <span class="music_sender">
+    <%= link_to music.channel.sender_irc, '/musics/users/'+music.channel.sender_irc %>
+  </span>
+</li>

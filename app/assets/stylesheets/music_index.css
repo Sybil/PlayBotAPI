@@ -1,3 +1,30 @@
+a, .clickable_links span{
+  display: inline-block;
+  font: 15px Helvetica Neue, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  color: rgba(255,220,180,1);
+  font-weight: 550;
+  vertical-align: middle;
+}
+
+a
+{
+  text-decoration: none;
+  /* 250 220 180 1*/
+  border-radius:20px;
+  padding: 2px 6px;
+}
+
+.tags{
+  color: rgba(0, 110, 140, 0.95);
+}
+
+a:hover{
+  background-color: rgba(255,220,180,1);
+  color: rgba(0, 110, 140, 0.95);
+  cursor: pointer;
+}
+
 ul
 {
   list-style-type: none;
@@ -7,23 +34,39 @@ ul
 
 .clickable_links
 {
-  background-color: rgba(0, 110, 140, 0.8);
+  /*0 110 140 0.8*/
+  background-color: rgba(0, 110, 140, 1);
   margin: 2px;
   cursor: pointer;
-  overflow: hidden;
-  position: relative;
+  padding: 10px 0;
+  border-radius: 12px;
 }
 
-
-.clickable_links span
-{
+.pagination{
   display: inline-block;
-  padding: 15px 0;
-  font: 15px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: rgba(250,220,180,1);
-  overflow: hidden;
-  position: relative;
-  text-overflow: ellipsis;
+  background-color: rgba(0, 110, 140, 1);
+  padding: 5px;
+  border-radius: 12px;
+  color: rgba(255, 220, 180, 1);
+}
+
+.page.current{
+  background-color: rgba(255,220,180,1);
+  color: rgba(0, 110, 140, 0.95);
+  display: inline-block;
+  font: 15px Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 550;
+  vertical-align: middle;
+  border-radius:20px;
+  padding: 2px 6px;
+}
+
+.clickable_links:hover{
+  background-color: rgba(0, 110, 140, 0.8);
+}
+
+#on_play {
+  background-color: rgba(0, 110, 140, 0.8);
 }
 
 .music_id
@@ -50,4 +93,9 @@ ul
 .music_tags
 {
   width: 20%;
+}
+
+iframe{
+  display: block;
+  margin: 0 auto;
 }

@@ -1,20 +1,4 @@
 <ul>
-  <% @musics.each do |music| %>
-    <li class="clickable_links" 
-        data-id="<%= music.id %>" 
-        data-player="<%= music.type %>" 
-        data-url="<%= 
-            if music.type == "youtube" 
-              track = music.url.sub(/.*v=/,'')
-            elsif music.type == "soundcloud"
-              track = music.url.sub(/https:\/\/(www\.)?soundcloud\.com\//,'')
-            end %>">
-      <span class="music_id"><%= music.id %></span>
-      <span class="music_chan"><%= music.channel.chan %></span>
-      <span class="music_title"><%= music.title%></span>
-      <span class="music_tags"><%= music.tags.map{|t| t.tag}.join(", ") %></span>
-      <span class="music_sender"><%= music.channel.sender_irc %></span>
-    </li>
-  <% end %>
+  <%= render partial: "shared/music", collection: @musics %>
 </ul>
 <%= paginate @musics %>

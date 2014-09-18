@@ -10,6 +10,11 @@ $( ".clickable_links" ).each(function() {
   }
 });
 
+$("a").on( 'click', function(event){
+    event.stopPropagation();
+});
+
+
 function youtube_click() {
   music_info = $(this);
   youtube_player();
@@ -59,6 +64,8 @@ function soundcloud_click() {
 }
 
 function player_destroy() {
+  $("#on_play").removeAttr("id");
+  music_info.attr("id", "on_play");
   if (player) {
     if ($("#player_block").length == 0) {
       $("#player_position").append("<div id=\"player_block\"></div>");
