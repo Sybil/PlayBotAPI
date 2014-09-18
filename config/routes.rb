@@ -62,4 +62,5 @@ Rails.application.routes.draw do
   get '/musics/tags/:tag', to: "tags#show"
   get '/musics/users/:user', to: "channels#show_user"
   get '/musics/channels/:channel', to: "channels#show_channel"
+  get '/users', to: "channels#index_users"
 end

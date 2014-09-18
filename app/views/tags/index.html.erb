@@ -1,4 +1,4 @@
 <% @tagcloud.each do |tag,weight| %>
-  <%= link_to raw("<span class=\"tags\" style=\"font-size:"+(15+weight*200).to_s+"px\">"+tag+"</span>"), '/musics/tags/'+tag %>
+  <%= link_to tag, '/musics/tags/'+tag, style: "font-size:"+(15+weight*200).to_s+"px", class: "cloud" %>
 <% end %>
 

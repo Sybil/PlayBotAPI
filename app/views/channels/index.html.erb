@@ -1,0 +1,5 @@
+<ul>
+<% @channels.each do |channel| %>
+  <li><%= link_to channel, '/musics/channels/'+channel.sub('#',''), class: "cloud" %></li>
+<% end %>
+</ul>

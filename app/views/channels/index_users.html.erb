@@ -1,0 +1,3 @@
+<% @usercloud.each do |user,weight| %>
+  <%= link_to user, '/musics/users/'+user, style: "font-size:"+(15+weight*200).to_s+"px", class: "cloud" %>
+<% end %>

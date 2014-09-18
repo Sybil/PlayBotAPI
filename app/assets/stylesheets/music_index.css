@@ -15,8 +15,12 @@ a
   padding: 2px 6px;
 }
 
-.tags{
+.cloud{
   color: rgba(0, 110, 140, 0.95);
+}
+.cloud:hover{
+  color: rgba(255,220,180,1);
+  background-color: rgba(0, 110, 140, 0.95);
 }
 
 a:hover{
@@ -67,6 +71,25 @@ ul
 
 #on_play {
   background-color: rgba(0, 110, 140, 0.8);
+}
+
+.menu {
+  background-color: rgba(0, 110, 140, 1);
+  margin: auto;
+  cursor: pointer;
+  border-radius: 12px;
+  width: 60%;
+}
+
+.menu a{
+  width: 24.55%;
+  padding: 15px 0;
+  border-radius: 12px;
+  display: inline-block;
+  font: 20px Helvetica Neue, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .music_id

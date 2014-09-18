@@ -19,7 +19,11 @@ class TagsController < ApplicationController
 
     max_weight = @tagcloud.values.max
     @tagcloud.each do |tag, occ|
-      @tagcloud[tag] = occ / max_weight
+      if occ == 1
+        @tagcloud.delete(tag)
+      else
+        @tagcloud[tag] = occ / max_weight
+      end
     end
 
     respond_to do |format|

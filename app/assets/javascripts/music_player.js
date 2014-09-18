@@ -42,6 +42,9 @@ function next_music() {
   else if (music_info.data().player == "soundcloud" ) {
     soundcloud_player();
   }
+  else {
+    next_music();
+  }
 }
 
 function onPlayerStateChange(event) {
