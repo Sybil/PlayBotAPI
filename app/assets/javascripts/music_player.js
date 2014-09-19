@@ -1,5 +1,6 @@
 var music_info;
 var player;
+var player_display = false;
 
 $( ".clickable_links" ).each(function() {
   if ($(this).data().player == "youtube" ) {
@@ -22,6 +23,8 @@ function youtube_click() {
 
 function youtube_player() {
   player_destroy();
+  player_button();
+  next_button();
   player = new YT.Player('player_block', {
     height: '390',
     width: '640',
@@ -69,6 +72,10 @@ function soundcloud_click() {
 function player_destroy() {
   $("#on_play").removeAttr("id");
   music_info.attr("id", "on_play");
+
+  $("#player").remove();
+  $("#next").remove();
+
   if (player) {
     if ($("#player_block").length == 0) {
       $("#player_position").append("<div id=\"player_block\"></div>");
@@ -97,6 +104,8 @@ function soundcloud_listener() {
 
 function soundcloud_player() {
   player_destroy();
+  player_button();
+  next_button();
   var music_url = "https://www.soundcloud.com/"+music_info.data().url;
   SC.oEmbed(music_url, { auto_play: true , maxheight: 120, maxwidth: 1000 }, function(oEmbed, error) {
     if (error) { 
@@ -110,3 +119,29 @@ function soundcloud_player() {
   });
 }
 
+function player_button(){
+  if (player_display) {
+    $(".menu").prepend("<span><a id=\"player\">Player [Hide]</a></span>");
+  }
+  else {
+    $(".menu").prepend("<span><a id=\"player\">Player [Show]</a></span>");
+  }
+
+  $("#player").on( 'click', function(){ 
+    if ( player_display ) {
+      $("#player_position").css("display", "none");
+      $("#player").html("Player [Show]");
+      player_display = false;
+    }
+    else {
+      $("#player_position").css("display", "block");
+      $("#player").html("Player [Hide]");
+      player_display = true;
+    }
+  });
+}
+
+function next_button(){
+  $(".menu").append("<span><a id=\"next\">Next</a></span>");
+  $("#next").on( 'click', next_music);
+}

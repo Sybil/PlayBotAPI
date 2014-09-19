@@ -6,6 +6,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="white"></div>
+<div id="header">
   <ul>
     <li class="menu">
     <span><a href="/musics">Home</a></span> 
@@ -14,8 +16,7 @@
     <span><a href="/tags">Tags</a></span> 
     </li>
   </ul>
-  <div id="player_position">
-    <div id="player_block"></div>
+    <div id="player_position"><div id="player_block"></div></div>
   </div>
 <%= yield %>
 
