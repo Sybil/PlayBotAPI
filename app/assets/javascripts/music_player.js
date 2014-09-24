@@ -1,6 +1,8 @@
 var music_info;
 var player;
-var player_display = false;
+var player_expand = false;
+var player_min;
+var player_max;
 
 $( ".clickable_links" ).each(function() {
   if ($(this).data().player == "youtube" ) {
@@ -25,8 +27,13 @@ function youtube_player() {
   player_destroy();
   player_button();
   next_button();
+
+  var player_height;
+  if (player_expand) { player_height = 390; }
+  else { player_height = 30; }
+
   player = new YT.Player('player_block', {
-    height: '390',
+    height: player_height,
     width: '640',
     videoId: music_info.data().url,
     events: {
@@ -35,10 +42,22 @@ function youtube_player() {
       'onError': player_error
     }
   });
+  
+  var white_top = $("#header").height();
+  $("#white").css({'height':white_top}).slideDown();
+  player_min = 30;
+  player_max = 390;
 }
 
 function next_music() {
   music_info = $("li[data-id=\'"+music_info.data().id+"\']").next();
+  if (music_info.length == 0) {
+
+     window.location.href = $(".next a").attr('href');
+
+     //setTimeout($(".clickable_links").first().trigger("click"),2000);
+     //console.log($(".clickable_links").first());
+  }
   if (music_info.data().player == "youtube" ) {
     youtube_player();
   }
@@ -106,8 +125,13 @@ function soundcloud_player() {
   player_destroy();
   player_button();
   next_button();
+
+  var player_height;
+  if (player_expand) { player_height = 120; }
+  else { player_height = 20; }
+
   var music_url = "https://www.soundcloud.com/"+music_info.data().url;
-  SC.oEmbed(music_url, { auto_play: true , maxheight: 120, maxwidth: 1000 }, function(oEmbed, error) {
+  SC.oEmbed(music_url, { auto_play: true , maxheight: player_height, maxwidth: 1000 }, function(oEmbed, error) {
     if (error) { 
       next_music();
     }
@@ -117,27 +141,36 @@ function soundcloud_player() {
       setTimeout(soundcloud_listener, 2000 );
     }
   });
+  
+  var white_top = $("#header").height();
+  $("#white").css({'height':white_top}).slideDown();
+  player_min = 20;
+  player_max = 120;
 }
 
 function player_button(){
-  if (player_display) {
-    $(".menu").prepend("<span><a id=\"player\">Player [Hide]</a></span>");
+  if (player_expand) {
+    $(".menu").prepend("<span><a id=\"player\">Player [Reduce]</a></span>");
   }
   else {
-    $(".menu").prepend("<span><a id=\"player\">Player [Show]</a></span>");
+    $(".menu").prepend("<span><a id=\"player\">Player [Expand]</a></span>");
   }
 
-  $("#player").on( 'click', function(){ 
-    if ( player_display ) {
-      $("#player_position").css("display", "none");
-      $("#player").html("Player [Show]");
-      player_display = false;
+  $("#player").on( 'click', function(){
+    if ( player_expand ) {
+      $("iframe").attr('height', player_min);
+      $("#player").html("Player [Expand]");
+      player_expand = false;
+
     }
     else {
-      $("#player_position").css("display", "block");
-      $("#player").html("Player [Hide]");
-      player_display = true;
-    }
+      $("iframe").attr('height', player_max);
+      $("#player_position").slideDown();
+      $("#player").html("Player [Reduce]");
+      player_expand = true;
+    }  
+    var white_top = $("#header").height();
+    $("#white").css({'height':white_top}).slideDown();
   });
 }
 

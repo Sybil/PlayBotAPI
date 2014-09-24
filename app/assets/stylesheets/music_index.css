@@ -68,19 +68,18 @@ ul
 }
 
 .menu {
-  margin: auto;
+  margin: 5px auto;
   text-align: center;
   background-color: rgba(0, 110, 140, 1);
 }
 #white{
-  height: 73px;
+  height: 63px;
 }
 
 #header{
   position:fixed;
   width: 100%;
   background-color: white;
-  padding: 10px 0;
   margin: 0; 
   top: 0;
 }
@@ -103,7 +102,7 @@ body, html, head{
 }
 
 #player_position{
-  display: none;
+  margin-bottom: 5px;    
 }
 
 .music_id
