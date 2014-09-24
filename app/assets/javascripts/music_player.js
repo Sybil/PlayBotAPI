@@ -17,6 +17,11 @@ $("a").on( 'click', function(event){
     event.stopPropagation();
 });
 
+$( document ).ready(function () {
+  if ($(location).attr("hash") == "#autoplay=on") {
+    $(".clickable_links").first().trigger('click');
+  }
+});
 
 function youtube_click() {
   music_info = $(this);
@@ -52,11 +57,10 @@ function youtube_player() {
 function next_music() {
   music_info = $("li[data-id=\'"+music_info.data().id+"\']").next();
   if (music_info.length == 0) {
-
-     window.location.href = $(".next a").attr('href');
-
-     //setTimeout($(".clickable_links").first().trigger("click"),2000);
-     //console.log($(".clickable_links").first());
+    next_page = $(".next a").attr('href')
+    if ( next_page.length != 0 ){
+      window.location.href = next_page+"#autoplay=on";
+    }
   }
   if (music_info.data().player == "youtube" ) {
     youtube_player();
@@ -141,9 +145,8 @@ function soundcloud_player() {
       setTimeout(soundcloud_listener, 2000 );
     }
   });
-  
-  var white_top = $("#header").height();
-  $("#white").css({'height':white_top}).slideDown();
+ 
+  $("#white").css({'height':68+player_height}).slideDown();
   player_min = 20;
   player_max = 120;
 }

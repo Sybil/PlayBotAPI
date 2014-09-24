@@ -38,9 +38,8 @@ ul
 
 .clickable_links
 {
-  /*0 110 140 0.8*/
   background-color: rgba(0, 110, 140, 1);
-  margin: 2px;
+  margin: 2px 10px;
   cursor: pointer;
   padding: 10px 0;
   border-radius: 12px;
@@ -59,11 +58,13 @@ ul
   color: rgba(0, 110, 140, 0.95);
 }
 
-.clickable_links:hover{
-  background-color: rgba(0, 110, 140, 0.8);
+#on_play{
+  background-color: rgba(0,70,100,1);
+  margin-left: 20px;
+  margin-right: 0;
 }
 
-#on_play {
+.clickable_links:hover{
   background-color: rgba(0, 110, 140, 0.8);
 }
 

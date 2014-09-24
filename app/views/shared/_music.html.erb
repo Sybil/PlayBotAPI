@@ -12,7 +12,7 @@
     <%= link_to music.channel.chan, '/musics/channels/'+music.channel.chan.sub('#','') %>
   </span>
   <span class="music_title">
-    <%= link_to music.title, music.url %>
+    <%= music.title %>
   </span>
   <span class="music_tags">
     <%= raw(music.tags.map{|t| link_to t.tag, '/musics/tags/'+t.tag}.join(" ")) %>
