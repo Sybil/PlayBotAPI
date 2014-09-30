@@ -9,14 +9,21 @@
 <div id="white"></div>
 <div id="header">
   <ul>
-    <li class="menu">
-    <span><a href="/musics">Home</a></span> 
-    <span><a href="/channels">Channels</a></span> 
-    <span><a href="/users">Users</a></span> 
-    <span><a href="/tags">Tags</a></span> 
+    <li id="menu">
+    <span><a id="menu_button">Menu</a></span>
+    <span class="menu_toggleable"><a href="/musics">Home</a></span> 
+    <span class="menu_toggleable"><a href="/channels">Channels</a></span> 
+    <span class="menu_toggleable"><a href="/users">Users</a></span> 
+    <span class="menu_toggleable"><a href="/tags">Tags</a></span> 
+    </li>
+    <!-- </ul>
+    <div id="player_position"><div id="player_block"></div></div> -->
+    <li>
+    <span id="player_button"></span>
+    <span id="player_position"><span id="player_block"></span></span>
+    <span id="next_button"></span>
     </li>
   </ul>
-  <div id="player_position"><div id="player_block"></div></div>
 </div>
 <%= yield %>
 

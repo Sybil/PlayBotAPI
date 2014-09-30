@@ -14,7 +14,7 @@ a, .page.current
   padding: 2px 6px;
 }
 
-.cloud{
+.cloud, #player, #next{
   color: rgba(0, 110, 140, 0.95);
 }
 
@@ -60,17 +60,16 @@ ul
 
 #on_play{
   background-color: rgba(0,70,100,1);
-  margin-left: 20px;
-  margin-right: 0;
+  margin-left: 0;
+  margin-right: 20px;
 }
 
 .clickable_links:hover{
   background-color: rgba(0, 110, 140, 0.8);
 }
 
-.menu {
-  margin: 5px auto;
-  text-align: center;
+#menu {
+  margin: 5px auto 5px 0;
   background-color: rgba(0, 110, 140, 1);
 }
 #white{
@@ -91,7 +90,8 @@ body, html, head{
 }
 
 
-.menu a{
+#menu a{
+  text-align: center;
   cursor: pointer;
   width: 15%;
   padding: 15px 0;
@@ -102,8 +102,22 @@ body, html, head{
   border-radius: 0;
 }
 
-#player_position{
-  margin-bottom: 5px;    
+.menu_toggleable{
+  display: none;
+}
+
+#player_button, #next_button{
+  width: 20%;
+  text-align: center;
+}
+
+#player, #next{
+  cursor: pointer;
+  padding: 5px;
+  font: 15px Helvetica Neue, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  border-radius: 0;
+  vertical-align: baseline;
 }
 
 .music_id
@@ -120,6 +134,7 @@ body, html, head{
 .music_title
 {
   width: 50%;
+  margin-left: 5px;
 }
 
 .music_sender
@@ -133,6 +148,6 @@ body, html, head{
 }
 
 iframe{
-  display: block;
+  display: inline;
   margin: 0 auto;
 }

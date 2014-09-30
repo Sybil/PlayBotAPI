@@ -4,6 +4,10 @@ var player_expand = false;
 var player_min;
 var player_max;
 
+$("#menu_button").on('click', function () {
+  $(".menu_toggleable").toggle();
+});
+
 $( ".clickable_links" ).each(function() {
   if ($(this).data().player == "youtube" ) {
     $(this).on( 'click', youtube_click);
@@ -101,7 +105,7 @@ function player_destroy() {
 
   if (player) {
     if ($("#player_block").length == 0) {
-      $("#player_position").append("<div id=\"player_block\"></div>");
+      $("#player_position").html("<span id=\"player_block\"></span>");
     }
 
     try {
@@ -153,10 +157,10 @@ function soundcloud_player() {
 
 function player_button(){
   if (player_expand) {
-    $(".menu").prepend("<span><a id=\"player\">Player [Reduce]</a></span>");
+    $("#player_button").html("<a id=\"player\">Player [Reduce]</a>");
   }
   else {
-    $(".menu").prepend("<span><a id=\"player\">Player [Expand]</a></span>");
+    $("#player_button").html("<a id=\"player\">Player [Expand]</a>");
   }
 
   $("#player").on( 'click', function(){
@@ -178,6 +182,6 @@ function player_button(){
 }
 
 function next_button(){
-  $(".menu").append("<span><a id=\"next\">Next</a></span>");
+  $("#next_button").html("<a id=\"next\">Next</a>");
   $("#next").on( 'click', next_music);
 }

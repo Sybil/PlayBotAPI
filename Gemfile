@@ -35,6 +35,9 @@ gem 'soundcloud'
 #Gem for pagination
 gem 'kaminari'
 
+#Gem for Ruby web server
+gem 'thin'
+
 group :development do
 gem 'pry'
 end
