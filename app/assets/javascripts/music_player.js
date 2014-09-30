@@ -99,6 +99,7 @@ function soundcloud_click() {
 function player_destroy() {
   $("#on_play").removeAttr("id");
   music_info.attr("id", "on_play");
+  $("#player_block").removeClass("soundcloud_player");
 
   $("#player").remove();
   $("#next").remove();
@@ -139,7 +140,7 @@ function soundcloud_player() {
   else { player_height = 20; }
 
   var music_url = "https://www.soundcloud.com/"+music_info.data().url;
-  SC.oEmbed(music_url, { auto_play: true , maxheight: player_height, maxwidth: 1000 }, function(oEmbed, error) {
+  SC.oEmbed(music_url, { auto_play: true , maxheight: player_height, maxwidth: 640}, function(oEmbed, error) {
     if (error) { 
       next_music();
     }
@@ -150,7 +151,8 @@ function soundcloud_player() {
     }
   });
  
-  $("#white").css({'height':68+player_height}).slideDown();
+  $("#white").css({'height':60+player_height}).slideDown();
+  $("#player_block").addClass("soundcloud_player");
   player_min = 20;
   player_max = 120;
 }
