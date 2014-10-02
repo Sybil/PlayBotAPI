@@ -1,0 +1,35 @@
+<span class="filters_toggleable">
+  <label for="tags_filter">Tag </label>  
+  <select id="tags_filter">
+    <option>All</option>
+    <% @tags.sort_by {|tag,weight| weight }.reverse.each do |tag,weight| %>
+      <option value="<%=tag%>">
+        <%= tag %>
+      </option>
+    <% end %>
+</select>
+</span>
+
+<span class="filters_toggleable">
+  <label for="user_filter">User </label>  
+  <select id="user_filter">
+    <option>All</option>
+    <% @users.sort_by {|user,weight| weight }.reverse.each do |user,weight| %>
+      <option value="<%=user%>">
+        <%= user %>
+      </option>
+    <% end %>
+</select>
+</span>
+
+<span class="filters_toggleable">
+  <label for="channel_filter">Channel </label>  
+  <select id="channel_filter">
+    <option>All</option>
+    <% @channels.each do |channel| %>
+      <option value="<%=channel%>">
+        <%= channel%>
+      </option>
+    <% end %>
+</select>
+</span>

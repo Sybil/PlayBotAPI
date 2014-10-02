@@ -28,15 +28,15 @@ class ChannelsController < ApplicationController
 
   def index
     channels = Channel.all
-    list_channels = Array.new
-    channels.each do |channel| 
-      list_channels.push(channel.chan)
-    end
+    #list_channels = Array.new
+    #channels.each do |channel| 
+    #  list_channels.push(channel.chan)
+    #end
 
     @channels = Array.new
-    list_channels.each do |channel|
-      if @channels.include?(channel) == false
-        @channels.push(channel)
+    channels.each do |channel|
+      if @channels.include?(channel.chan) == false
+        @channels.push(channel.chan)
       end
     end
    

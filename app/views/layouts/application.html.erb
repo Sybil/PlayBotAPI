@@ -14,11 +14,17 @@
       <span class="menu_toggleable"><a href="/musics">Home</a></span> 
       <span class="menu_toggleable"><a href="/channels">Channels</a></span> 
       <span class="menu_toggleable"><a href="/users">Users</a></span> 
-      <span class="menu_toggleable"><a href="/tags">Tags</a></span> 
+      <span class="menu_toggleable"><a href="/tags">Tags</a></span>
+      <span><a id="filters_button">Filters</a></span>
+      <%= render partial: "shared/filter" %>
     </li>
-    <!-- </ul>
-    <div id="player_position"><div id="player_block"></div></div> -->
-    <li id="player_menu"><span id="player_button"></span><span id="player_position"><span id="player_block"></span></span><span id="next_button"></span></li>
+    <li id="player_menu">
+      <span id="player_button"></span>
+      <span id="player_position">
+        <span id="player_block"></span>
+      </span>
+      <span id="next_button"></span>
+    </li>
   </ul>
 </div>
 <%= yield %>

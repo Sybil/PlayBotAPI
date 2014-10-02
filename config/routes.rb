@@ -63,4 +63,7 @@ Rails.application.routes.draw do
   get '/musics/users/:user', to: "channels#show_user"
   get '/musics/channels/:channel', to: "channels#show_channel"
   get '/users', to: "channels#index_users"
+
+  #Experiment
+  get '/filters/:channel/:user/:tag', to: "musics#filters"
 end

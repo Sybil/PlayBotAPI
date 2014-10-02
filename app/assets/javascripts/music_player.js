@@ -4,8 +4,18 @@ var player_expand = false;
 var player_min;
 var player_max;
 
+$("select").on('change', function() {
+  window.location.href = "/filters/-/-/"+this.value;
+});
+
 $("#menu_button").on('click', function () {
+  $(".filters_toggleable").hide();
   $(".menu_toggleable").toggle();
+});
+
+$("#filters_button").on('click', function () {
+  $(".menu_toggleable").hide();
+  $(".filters_toggleable").toggle(); 
 });
 
 $( ".clickable_links" ).each(function() {

@@ -1,4 +1,4 @@
-a, .page.current, .clickable_links span{
+a, .page.current, .clickable_links span, .filters_toggleable{
   display: inline-block;
   font: 15px Helvetica Neue, Helvetica, Arial, sans-serif;
   overflow: hidden;
@@ -102,7 +102,7 @@ body, html, head{
   border-radius: 0;
 }
 
-.menu_toggleable{
+.menu_toggleable, .filters_toggleable{
   display: none;
 }
 
@@ -170,4 +170,10 @@ iframe{
   display: block;
   margin: 0 auto;
   margin-bottom: 5px;
+}
+
+select{
+  width: 75px; 
+  color: rgba(255,220,180,1);
+  background-color: rgba(0, 110, 140,1);
 }
