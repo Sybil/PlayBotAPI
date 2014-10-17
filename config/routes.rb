@@ -53,17 +53,22 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  resources :musics
-  resources :tags
-  resources :channels
+  #
+  get '/users', to: "channels#index_users"
+
+  concern :tracks do
+    resources :musics, only: [:index]
+  end
+  resources :tags, concerns: :tracks, only: [:index, :show]
+  resources :channels, concerns: :tracks, only: [:index, :show]
+  resources :users, concerns: :tracks, only: [:index, :show]
   
   root to: 'musics#index'
 
-  get '/musics/tags/:tag', to: "tags#show"
-  get '/musics/users/:user', to: "channels#show_user"
-  get '/musics/channels/:channel', to: "channels#show_channel"
-  get '/users', to: "channels#index_users"
+  #get '/musics/tags/:tag', to: "tags#show"
+  #get '/users/:user_id/musics', to: "musics#index"
+  #get '/musics/channels/:channel', to: "channels#show_channel"
 
   #Experiment
-  get '/filters/:channel/:user/:tag', to: "musics#filters"
+  #get '/filters/:channel/:user/:tag', to: "musics#filters"
 end

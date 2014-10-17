@@ -1,6 +1,14 @@
 class MusicsController < ApplicationController
+  def add_filters(filters)
+
+    @musics = @musics.with_tag(filters[:tag_id]) if filters.has_key?(:tag_id)
+    @musics = @musics.with_channel('#'+filters[:channel_id]) if filters.has_key?(:channel_id)
+    @musics = @musics.with_user(filters[:user_id]) if filters.has_key?(:user_id)
+  end
+  
   def index
     @musics = Music.page params[:page]
+    add_filters(params)
 
     respond_to do |format|
       format.html
@@ -13,14 +21,5 @@ class MusicsController < ApplicationController
       format.html {render 'show', layout: false}
     end
   end
-
-  def filters
-    @musics = Music.joins(:tags).where(playbot_tags: {tag: params[:tag]}).joins(:channel).where(playbot_chan: {chan: params[:channel]}).where(playbot_chan: {sender_irc: params[:user]}).page params[:page]
-    respond_to do |format|
-      format.html
-    end
-  end
-# where(playbot_tags: {tag: params[:tag]})
-
 
 end

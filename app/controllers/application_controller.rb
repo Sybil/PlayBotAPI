@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_filter :get_tags, :get_users, :get_channel
+  before_filter :get_tags, :get_users, :get_channels
 
-  def get_channel
+  def get_channels
     channels = Channel.all    
     @channels = Array.new
     channels.each do |channel|
