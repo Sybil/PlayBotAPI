@@ -9,15 +9,15 @@
     end %>">
   <span class="music_id"><%= music.id %></span>
   <span class="music_chan">
-    <%= link_to music.channel.chan, '/musics/channels/'+music.channel.chan.sub('#','') %>
+    <%= link_to music.channel.chan, "/channels/#{music.channel.chan.sub('#','')}/musics" %>
   </span>
   <span class="music_title">
     <%= music.title %>
   </span>
   <span class="music_tags">
-    <%= raw(music.tags.map{|t| link_to t.tag, '/musics/tags/'+t.tag}.join(" ")) %>
+    <%= raw(music.tags.map{|t| link_to t.tag, "/tags/#{t.tag}/musics"}.join(" ")) %>
   </span>
   <span class="music_sender">
-    <%= link_to music.channel.sender_irc, '/musics/users/'+music.channel.sender_irc %>
+    <%= link_to music.channel.sender_irc, "/users/#{music.channel.sender_irc}/musics" %>
   </span>
 </li>

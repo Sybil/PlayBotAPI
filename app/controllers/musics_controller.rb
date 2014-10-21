@@ -1,15 +1,16 @@
 class MusicsController < ApplicationController
-  def add_filters(filters)
-
-    @musics = @musics.with_tag(filters[:tag_id]) if filters.has_key?(:tag_id)
-    @musics = @musics.with_channel('#'+filters[:channel_id]) if filters.has_key?(:channel_id)
-    @musics = @musics.with_user(filters[:user_id]) if filters.has_key?(:user_id)
+  def filters( *filters )
+    filters.each do | filter |
+      if param = params[filter] || params["#{filter}_id"]
+        @musics = @musics.send( "with_#{filter}", param )
+      end
+    end
   end
-  
+
   def index
     @musics = Music.page params[:page]
-    add_filters(params)
-
+    filters :tag, :channel, :user
+  
     respond_to do |format|
       format.html
     end

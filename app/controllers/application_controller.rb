@@ -21,11 +21,8 @@ class ApplicationController < ActionController::Base
 
     @tags = Hash.new
     tags.each do |tag|
-      if @tags.key?(tag.tag)
-        @tags[tag.tag] += 1.0
-      else
-        @tags[tag.tag] = 1.0
-      end
+      @tags[tag.tag] ||= 0.0
+      @tags[tag.tag] += 1.0
     end
     max_weight = @tags.values.max
     @tags.each do |tag, occ|
@@ -42,11 +39,8 @@ class ApplicationController < ActionController::Base
 
     @users = Hash.new
     users.each do |user|
-      if @users.key?(user.sender_irc)
-        @users[user.sender_irc] += 1.0
-      else
-        @users[user.sender_irc] = 1.0
-      end
+      @users[user.sender_irc] ||= 0.0
+      @users[user.sender_irc] += 1.0
     end
 
     max_weight = @users.values.max

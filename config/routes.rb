@@ -65,10 +65,5 @@ Rails.application.routes.draw do
   
   root to: 'musics#index'
 
-  #get '/musics/tags/:tag', to: "tags#show"
   #get '/users/:user_id/musics', to: "musics#index"
-  #get '/musics/channels/:channel', to: "channels#show_channel"
-
-  #Experiment
-  #get '/filters/:channel/:user/:tag', to: "musics#filters"
 end
