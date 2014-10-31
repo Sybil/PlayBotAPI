@@ -10,7 +10,7 @@ class Music < ActiveRecord::Base
   end
 
   def self.with_channel(channel)
-    self.joins(:channel).where("channel = ?", "##{channel}")
+    self.joins(:channel).where("chan = ?", "##{channel}")
   end
 
   def self.with_user(user)

@@ -5,7 +5,7 @@ var player_min;
 var player_max;
 
 $("select").on('change', function() {
-  window.location.href = "/filters/-/-/"+this.value;
+  window.location.href = "?NOMOREJS_WAITFOREMBER="+this.value;
 });
 
 $("#menu_button").on('click', function () {
