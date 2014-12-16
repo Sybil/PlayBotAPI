@@ -27,14 +27,14 @@ class TagsController < ApplicationController
     #end
 
     respond_to do |format|
-      format.html
+      format.json {render json: tags, status: 200}
     end
   end
 
   def show
     @musics = Music.joins(:tags).where(playbot_tags: {tag: params[:tag]}).page params[:page]
     respond_to do |format|
-      format.html
+      format.json {render json: tag, status: 200}
     end
   end
 end

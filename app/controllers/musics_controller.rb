@@ -12,14 +12,14 @@ class MusicsController < ApplicationController
     filters :tag, :channel, :user
   
     respond_to do |format|
-      format.html
+      format.json {render json: musics, status: 200}
     end
   end
 
   def show 
     @music = Music.find(params[:id])
     respond_to do |format|
-      format.html {render 'show', layout: false}
+      format.json {render json: music, status: 200}
     end
   end
 
