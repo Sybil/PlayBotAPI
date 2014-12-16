@@ -8,19 +8,16 @@ class MusicsController < ApplicationController
   end
 
   def index
-    @musics = Music.page params[:page]
+    @musics = Music.all
     filters :tag, :channel, :user
   
-    respond_to do |format|
-      format.json {render json: musics, status: 200}
-    end
+    render json: @musics, status: 200
   end
 
   def show 
     @music = Music.find(params[:id])
-    respond_to do |format|
-      format.json {render json: music, status: 200}
-    end
+    
+    render json: @music, status: 200
   end
 
 end
