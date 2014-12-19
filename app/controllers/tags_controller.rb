@@ -5,7 +5,7 @@ class TagsController < ApplicationController
   end
 
   def show
-    @musics = Music.joins(:tags).where(playbot_tags: {tag: params[:tag]})
+    @tracks = Track.joins(:tags).where(playbot_tags: {tag: params[:tag]})
     render json: @tag, status: 200
   end
 end

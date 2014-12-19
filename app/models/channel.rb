@@ -1,6 +1,6 @@
 class Channel < ActiveRecord::Base
   self.table_name = "playbot_chan"
-  belongs_to :music
+  belongs_to :track
 
   def self.with_channel(channel)
     where("chan = ?", channel)

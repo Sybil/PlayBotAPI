@@ -16,11 +16,18 @@ gem 'rails', '4.1.5'
 
 #Gem to produce a lightweight json API
 gem 'rails-api'
+#Authorize API usage from different domains
+gem 'rack-cors'
+#Add Serializer class to choose json fields
+gem 'active_model_serializers'
+#Because we're using a shitty database designed by a fuckin' drug addict
+gem 'composite_primary_keys'
 
 # Use jquery as the JavaScript library
 #gem 'jquery-rails'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -36,7 +43,7 @@ gem 'mysql2'
 #gem 'soundcloud'
 
 #Gem for pagination
-#gem 'kaminari'
+gem 'kaminari'
 
 #Gem for Ruby web server
 gem 'thin'

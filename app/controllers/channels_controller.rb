@@ -10,12 +10,12 @@ class ChannelsController < ApplicationController
   end
 
   def show_user
-    @musics = Music.joins(:channel).where(playbot_chan: {sender_irc: params[:user]})
+    @tracks = Track.joins(:channel).where(playbot_chan: {sender_irc: params[:user]})
     render json: @user, status: 200
   end
 
   def show_channel
-    @musics = Music.joins(:channel).where(playbot_chan: {chan: "#"+params[:channel]})
+    @tracks = Track.joins(:channel).where(playbot_chan: {chan: "#"+params[:channel]})
     render json: @channel, status:200
   end
 
