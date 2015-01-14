@@ -1,12 +1,32 @@
+= PlayBotAPI
+
+== Abstract
+PlayBotAPI delivers a json API communicating with PlayBot's database. This database contains music tracks and their metadata.
+
+== PlayBot
+PlayBot (https://github.com/erdnaxeli/PlayBot) is an awesome irc bot. Using it, people can share tracks' links through IRC channels.
+All playbot data (users, music links, tags ...) are stored in an unique mysql database.
+
 == PlayBotAPI
+PlayBotAPI is coded in RoR (Rails) powered with some dreadful gems.
 
-* Abstract
+=== Gems
+* rails-api : Remove several major Rails middleware features to lighten the process and specialize it as an API.
+* rack-cors : Open the API to different domain names.
+* active_model_serializers : Tool to select and design the json data.
+* composite_primary_keys : Add composite primary keys management to rails models.
 
-PlayBotAPI delivers a json API to communicate with PlayBot's database which contain music tracks and some metadata.
+=== Routes
+         Prefix Verb URI Pattern                            Controller#Action
+          users GET  /users(.:format)                       channels#index_users
+     tag_tracks GET  /tags/:tag_id/tracks(.:format)         tracks#index
+           tags GET  /tags(.:format)                        tags#index
+ channel_tracks GET  /channels/:channel_id/tracks(.:format) tracks#index
+       channels GET  /channels(.:format)                    channels#index
+    user_tracks GET  /users/:user_id/tracks(.:format)       tracks#index
+                GET  /users(.:format)                       users#index
+         tracks GET  /tracks(.:format)                      tracks#index
+          track GET  /tracks/:id(.:format)                  tracks#show
 
-* PLayBot
-
-PlayBot (https://github.com/erdnaxeli/PlayBot) is an awesome irc bot which enable people to easily manipulate music/video links through irc channels.
-Each of these links are stored in an unique database which allows to handle favourites, reminders, exchange, tags ...
-
-WebPlayBot is the link between these data and the non-irc user : helped by filters, integrated players, autonext ... you can listen all the tracks selected by enthousiasts geeks. 
+=== Example
+https://api-playbot.skizzk.fr/tracks returns all the tracks saved in the database.
