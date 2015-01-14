@@ -23,6 +23,11 @@ gem 'active_model_serializers'
 #Because we're using a shitty database designed by a fuckin' drug addict
 gem 'composite_primary_keys'
 
+#Framework for background job processing : managing the database transformation between servers
+gem 'sidekiq'
+#Framework for distributed schedulinh
+gem 'sidetiq'
+
 # Use jquery as the JavaScript library
 #gem 'jquery-rails'
 
