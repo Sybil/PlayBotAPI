@@ -1,7 +1,6 @@
 class Tag < ActiveRecord::Base
-  self.table_name = :playbot_tags
-  self.primary_keys = :id, :tag
   
-  belongs_to :track
+  has_many :tag_assignations
+  has_many :tracks, through: :tag_assignation
 
 end

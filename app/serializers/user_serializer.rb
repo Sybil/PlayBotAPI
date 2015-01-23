@@ -1,4 +1,4 @@
-class TagSerializer < ActiveModel::Serializer
+class UserSerializer < ActiveModel::Serializer
   attributes :id, :name
 
   #belongs_to :track

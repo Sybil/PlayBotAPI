@@ -1,13 +1,10 @@
 class Channel < ActiveRecord::Base
-  self.table_name = "playbot_chan"
-  belongs_to :track
+  
+  has_many :irc_posts
+  has_many :tracks, through: :irc_posts
 
   def self.with_channel(channel)
-    where("chan = ?", channel)
-  end
-
-  def self.with_user(user)
-    where("irc_sender = ?", user)
+    where("name = ?", channel)
   end
 
 end
