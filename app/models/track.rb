@@ -1,5 +1,5 @@
 class Track < ActiveRecord::Base
-  paginates_per 50  
+  paginates_per 51  
   #default_scope includes(:channels,:users,:tags)
 
   has_many :irc_posts

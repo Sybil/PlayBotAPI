@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   concern :tracks do
     resources :tracks, only: [:index]
   end
-  #resources :tags, concerns: :tracks, only: [:index, :show]
-  #resources :channels, concerns: :tracks, only: [:index, :show]
-  #resources :users, concerns: :tracks, only: [:index, :show]
+  resources :tags, concerns: :tracks, only: [:index, :show]
+  resources :channels, concerns: :tracks, only: [:index, :show]
+  resources :users, concerns: :tracks, only: [:index, :show]
   resources :tracks, only: [:index, :show]
 
   root to: 'tracks#index'

@@ -1,5 +1,5 @@
 class ChannelSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :quantity
 
   #has_many :tracks
   #has_many :users
