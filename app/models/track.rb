@@ -16,7 +16,7 @@ class Track < ActiveRecord::Base
   end
 
   def self.with_channel(channel)
-    self.joins(:channels).where("channels.name = ?", "##{channel}")
+    self.joins(:channels).where("channels.name = ?", "#{channel}")
   end
 
   def self.with_user(user)
