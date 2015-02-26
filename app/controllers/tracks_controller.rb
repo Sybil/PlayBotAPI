@@ -7,12 +7,57 @@ class TracksController < ApplicationController
     end
   end
 
+  def filterCondition ( filters )
+    query = ""
+    filters.each do | filter |
+      if param = params[filter] #|| params["#{filter}_id"]
+        unless query.empty?
+          query.concat(" and")
+        end
+
+        case filter
+        when :tag, :channel, :user
+          query.concat" #{filter}s.name='#{param}'"
+        when :date
+          query.concat(" irc_posts.posted_at='#{param}'")
+        end
+      end
+    end
+    return query
+  end
+
+  def filterQuery ( filters )
+    query=""
+
+    if [:channel, :user, :date].any? {|param| params.has_key? param}
+      query.concat(" inner join irc_posts ON irc_posts.track_id = tracks.id")
+    end
+
+    filters.each do | filter |
+      if params[filter] || params["#{filter}_id"]
+        case filter
+        when :channel
+          query.concat(" inner join channels on irc_posts.channel_id = channels.id")
+        when :user
+          query.concat(" inner join users on irc_posts.user_id = users.id")
+        when :tag
+          query.concat(" inner join tag_assignations on tag_assignations.track_id = tracks.id inner join tags on tags.id = tag_assignations.tag_id")
+        end
+      end
+    end
+    return query
+  end
+
+  def filtersOptimized( *filters )
+    condition = filterCondition( filters )
+    query = filterQuery( filters )
+    @tracks = Track.joins(query).where(condition).page params[:page]
+  end
+
   def index
-    #@tracks = Track.includes(irc_posts: [:channel, :user], tag_assignations: :tag).all #includes(irc_posts: [{ :channels, :users}]) #includes(:channels,:tags,:users)
-    #t = Track.all.joins('inner join irc_posts i ON tracks.track_id = i.track_id inner join channels c on i.channel_id = c.channel_id inner join gnations ti on tracks.track_id = ti.track_id inner join tags ta on ta.tag_id = ti.tag_id').select('tracks.name as t_name, u.name as u_name, c.name as c_name, ta.name as t_name')
-    #t.first.c_name
-    @tracks = Track.includes(:tags).page params[:page]
-    filters :tag, :channel, :user
+    #@tracks = Track.includes(:tags).page params[:page]
+    #filters :tag, :channel, :user
+    filtersOptimized :tag, :channel, :user, :date
     render json: @tracks, 
       status: 200, 
       meta: {

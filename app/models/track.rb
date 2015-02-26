@@ -11,12 +11,10 @@ class Track < ActiveRecord::Base
 
   def self.with_tag(tag)
     self.joins(:tags).where("tags.name = ?", tag )
-    #self.includes(:tags)
-    #self.where("tag = ?", tag)
   end
 
   def self.with_channel(channel)
-    self.joins(:channels).where("channels.name = ?", "#{channel}")
+    self.joins(:channels).where("channels.name = ?", channel)
   end
 
   def self.with_user(user)
