@@ -19,7 +19,7 @@ class TracksController < ApplicationController
         when :tag, :channel, :user
           query.concat" #{filter}s.name='#{param}'"
         when :date
-          query.concat(" irc_posts.posted_at='#{param}'")
+          query.concat(" date(irc_posts.posted_at)='#{param}'")
         end
       end
     end
@@ -51,7 +51,13 @@ class TracksController < ApplicationController
   def filtersOptimized( *filters )
     condition = filterCondition( filters )
     query = filterQuery( filters )
-    @tracks = Track.joins(query).where(condition).page params[:page]
+
+
+    if [:channel, :user, :date].any? {|param| params.has_key? param}
+      @tracks = Track.joins(query).where(condition).group(:track_id).page params[:page]
+    else
+      @tracks = Track.joins(query).where(condition).page params[:page]
+    end
   end
 
   def index
