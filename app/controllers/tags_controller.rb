@@ -6,7 +6,7 @@ class TagsController < ApplicationController
   end
 
   def tagsFilter
-    @tags = Tag.limit(100).order(quantity: :desc)
+    @tags = Tag.limit(200).order(quantity: :desc)
     render json: @tags, status: 200
   end
 

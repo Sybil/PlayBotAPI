@@ -54,7 +54,7 @@ class TracksController < ApplicationController
 
 
     if [:channel, :user, :date].any? {|param| params.has_key? param}
-      @tracks = Track.joins(query).where(condition).group(:track_id).page params[:page]
+      @tracks = Track.joins(query).where(condition).group("tracks.id").page params[:page]
     else
       @tracks = Track.joins(query).where(condition).page params[:page]
     end
