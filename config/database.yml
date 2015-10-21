@@ -12,10 +12,12 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: **** <database name>
+  database: <%= ENV["PLAYBOT_DB"] %>
   pool: 5
-  username: **** <database user>
-  password: **** <database password>
+  username: <%= ENV["PLAYBOT_DB_USER"] %>
+  password: <%= ENV["PLAYBOT_DB_PWD"] %>
+  host: <%= ENV["PLAYBOT_DB_HOST"] %>
+  port: <%= ENV["PLAYBOT_DB_PORT"] %>
 
 #development:
 #  <<: *default
