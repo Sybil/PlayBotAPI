@@ -16,3 +16,6 @@
 /tmp
 
 *.sw[m-p]
+
+# Ignore encrypted secrets key file.
+config/secrets.yml.key

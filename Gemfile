@@ -1,8 +1,5 @@
 source 'https://rubygems.org'
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-#gem 'rails', '4.1.5'
 gem 'rails'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
@@ -15,8 +12,6 @@ gem 'rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 #gem 'therubyracer',  platforms: :ruby
 
-#Gem to produce a lightweight json API
-gem 'rails-api'
 #Authorize API usage from different domains
 gem 'rack-cors'
 #Add Serializer class to choose json fields
@@ -28,9 +23,6 @@ gem 'active_model_serializers'
 gem 'sidekiq'
 #Framework for distributed scheduling
 gem 'sidetiq'
-
-#new relic
-gem  'newrelic_rpm'
 
 # Use jquery as the JavaScript library
 #gem 'jquery-rails'
