@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
   def index
-    tracks = filtersOptimized(:tag, :channel, :user, :date).page(params[:page])
+    tracks = filters_optimized(:tag, :channel, :user, :date).page(params[:page])
     render json: tracks,
       status: 200,
       include: :tags,
@@ -19,7 +19,7 @@ class TracksController < ApplicationController
 
   private
 
-  def filterCondition(filters)
+  def filter_condition(filters)
     query = ""
     filters.each do |filter|
       param = params[filter]
@@ -39,7 +39,7 @@ class TracksController < ApplicationController
     query
   end
 
-  def filterQuery(filters, tracks)
+  def filter_query(filters, tracks)
     filters.each do |filter|
       next unless params[filter] || params["#{filter}_id"]
 
@@ -54,11 +54,11 @@ class TracksController < ApplicationController
     tracks
   end
 
-  def filtersOptimized(*filters)
-    condition = filterCondition(filters)
-    tracks = Track.joins(:tags)
-    tracks = filterQuery(filters, tracks)
+  def filters_optimized(*filters)
+    condition = filter_condition(filters)
+    tracks = Track.includes(:tags).references(:tags)
+    tracks = filter_query(filters, tracks)
 
-    tracks.where(condition).distinct
+    tracks.where(condition).distinct.order(:id)
   end
 end
