@@ -1,7 +1,5 @@
 class TracksController < ApplicationController
   def index
-    #@tracks = Track.includes(:tags).page params[:page]
-    #filters :tag, :channel, :user
     tracks = filtersOptimized(:tag, :channel, :user, :date).page(params[:page])
     render json: tracks,
       status: 200,
@@ -20,14 +18,6 @@ class TracksController < ApplicationController
   end
 
   private
-
-  def filters(*filters)
-    filters.each do |filter|
-      if param = params[filter] || params["#{filter}_id"]
-        @tracks = @tracks.send( "with_#{filter}", param )
-      end
-    end
-  end
 
   def filterCondition(filters)
     query = ""
@@ -50,47 +40,25 @@ class TracksController < ApplicationController
   end
 
   def filterQuery(filters, tracks)
-    #query=""
-
-    #if [:channel, :user, :date].any? { |param| params.has_key? param }
-      #tracks = tracks.joins(:irc_posts)
-      #query.concat(" inner join irc_posts ON irc_posts.track_id = tracks.id")
-    #end
-
     filters.each do |filter|
       next unless params[filter] || params["#{filter}_id"]
 
       case filter
       when :channel
-        tracks = tracks.joins(irc_posts: :channels)
-        #query.concat(" inner join channels on irc_posts.channel_id = channels.id")
+        tracks = tracks.joins(irc_posts: :channel)
       when :user
-        tracks = tracks.joins(irc_posts: :users)
-        #query.concat(" inner join users on irc_posts.user_id = users.id")
-      when :tag
-        #tracks = tracks
-        #query.concat(" inner join tag_assignations on tag_assignations.track_id = tracks.id inner join tags on tags.id = tag_assignations.tag_id")
+        tracks = tracks.joins(irc_posts: :user)
       end
     end
 
-    #query
     tracks
   end
 
   def filtersOptimized(*filters)
     condition = filterCondition(filters)
-    #query = filterQuery(filters, tracks)
-    tracks = Track.includes(:tags)
+    tracks = Track.joins(:tags)
     tracks = filterQuery(filters, tracks)
 
-    if [:channel, :user, :date].any? { |param| params.has_key? param }
-      #tracks = Track.joins(query).where(condition).group("tracks.id").page params[:page]
-      tracks = tracks.where(condition).group("tracks.id")
-    else
-      #tracks = Track.joins(query).where(condition).page params[:page]
-      tracks = tracks.where(condition)
-    end
-
-    tracks
+    tracks.where(condition).distinct
   end
 end

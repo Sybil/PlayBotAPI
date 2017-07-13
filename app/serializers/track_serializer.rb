@@ -1,5 +1,10 @@
 class TrackSerializer < ActiveModel::Serializer
-  attributes :id, :name, :url, :provider, :author, :channel
+  attributes :id,
+             :name,
+             :url,
+             :provider,
+             :author,
+             :channel
 
   #embed :ids, include: true
 
